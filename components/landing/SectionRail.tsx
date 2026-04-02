@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useSectionRail } from "@/components/landing/section-rail-context";
 
 const SECTIONS = [
   { id: "top", label: "Mở đầu" },
@@ -16,6 +18,9 @@ const SECTIONS = [
   { id: "gia", label: "Học phí" },
   { id: "dang-ky", label: "Đăng ký" },
 ] as const;
+
+const RAIL_LEFT =
+  "left-[max(0.5rem,env(safe-area-inset-left))]" as const;
 
 /** Section becomes “current” when its top edge is at or above this px from viewport top (header + reading offset). */
 function computeActiveId(activationY: number): string {
@@ -38,6 +43,7 @@ function measureActivationY(): number {
 }
 
 export function SectionRail() {
+  const { open, setOpen } = useSectionRail();
   const [activeId, setActiveId] = useState<string>("top");
   const rafRef = useRef<number | null>(null);
   const activationYRef = useRef(88);
@@ -85,12 +91,38 @@ export function SectionRail() {
     };
   }, [scheduleUpdate, updateActive]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open, setOpen]);
+
+  const reopenTab = (
+    <button
+      type="button"
+      onClick={() => setOpen(true)}
+      aria-controls="section-rail-panel"
+      aria-label="Mở mục lục trang"
+      className={`fixed top-1/2 z-55 flex h-28 w-10 max-w-[min(100%,calc(100vw-0.5rem))] -translate-y-1/2 items-center justify-center rounded-r-xl border border-l-0 border-zinc-200/90 bg-white/95 py-2 pl-0 pr-0.5 text-zinc-700 shadow-[4px_0_24px_-8px_rgba(15,23,42,0.18)] ring-1 ring-zinc-900/5 backdrop-blur-md transition-colors hover:bg-zinc-50 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${RAIL_LEFT}`}
+      title="Mở mục lục"
+    >
+      <ChevronRight className="h-6 w-6 shrink-0" aria-hidden />
+    </button>
+  );
+
+  if (!open) {
+    return reopenTab;
+  }
+
   return (
-    <div className="pointer-events-none fixed left-2 top-0 z-40 hidden h-dvh max-h-svh w-37 pb-[env(safe-area-inset-bottom)] pt-[env(safe-area-inset-top)] lg:flex lg:flex-col lg:justify-center">
-      <nav
-        className="pointer-events-auto max-h-[min(28rem,calc(100dvh-2rem))] w-35 overflow-y-auto overscroll-contain rounded-xl border border-zinc-200/90 bg-white/92 py-2 pl-1.5 pr-1 shadow-[0_8px_28px_-10px_rgba(15,23,42,0.1)] ring-1 ring-zinc-900/5 backdrop-blur-md"
-        aria-label="Mục lục các phần trên trang"
-      >
+    <nav
+      id="section-rail-panel"
+      aria-label="Mục lục các phần trên trang"
+      className={`fixed top-1/2 z-55 max-h-[min(28rem,calc(100dvh-2rem-env(safe-area-inset-top)-env(safe-area-inset-bottom)))] w-35 max-w-[min(100%,calc(100vw-1rem))] -translate-y-1/2 overflow-y-auto overscroll-contain rounded-xl border border-zinc-200/90 bg-white/95 py-2 pl-1.5 pr-1 shadow-[0_8px_28px_-10px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/5 backdrop-blur-md ${RAIL_LEFT}`}
+    >
       <div className="flex items-center gap-1.5 px-1.5 pb-1.5">
         <span
           className="h-px flex-1 bg-linear-to-r from-transparent via-zinc-300 to-transparent"
@@ -140,7 +172,6 @@ export function SectionRail() {
           );
         })}
       </ul>
-      </nav>
-    </div>
+    </nav>
   );
 }

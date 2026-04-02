@@ -39,7 +39,7 @@ export function Craftsman() {
   return (
     <section
       id="nghe-nhan"
-      className="section-atmosphere section-atmosphere--sky px-4 py-14 sm:px-6 sm:py-16 lg:py-20"
+      className="section-atmosphere section-atmosphere--cream px-4 py-14 sm:px-6 sm:py-16 lg:py-20"
       aria-labelledby="craft-heading"
     >
       <Reveal>

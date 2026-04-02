@@ -74,7 +74,7 @@ export function Hero() {
               </span>
               <div className="text-left leading-tight">
                 <p className="font-semibold text-zinc-900">Nguyễn Minh Nhật</p>
-                <p className="text-xs text-zinc-500">Giảng viên · Hành trình kèm cận</p>
+                <p className="text-xs text-zinc-500">Giảng viên · Vibe code 1 kèm 1</p>
               </div>
             </div>
           </div>

@@ -1,5 +1,4 @@
-import { SiteHeader } from "@/components/landing/SiteHeader";
-import { SectionRail } from "@/components/landing/SectionRail";
+import { LandingChrome } from "@/components/landing/LandingChrome";
 import { Hero } from "@/components/landing/Hero";
 import { TrustStrip } from "@/components/landing/TrustStrip";
 import { ProblemSolution } from "@/components/landing/ProblemSolution";
@@ -22,21 +21,21 @@ export default function Home() {
       >
         Bỏ qua đến nội dung chính
       </a>
-      <SiteHeader />
-      <SectionRail />
-      <main id="main" className="flex-1 lg:pl-[10rem]">
-        <Hero />
-        <TrustStrip />
-        <ProblemSolution />
-        <Craftsman />
-        <WhyCursor />
-        <Formula4C />
-        <Journey />
-        <WeeklySupport />
-        <Manifesto />
-        <Pricing />
-        <FinalCta />
-      </main>
+      <LandingChrome>
+        <main id="main" className="flex-1">
+          <Hero />
+          <TrustStrip />
+          <ProblemSolution />
+          <Craftsman />
+          <WhyCursor />
+          <Formula4C />
+          <Journey />
+          <WeeklySupport />
+          <Manifesto />
+          <Pricing />
+          <FinalCta />
+        </main>
+      </LandingChrome>
       <SiteFooter />
     </>
   );
