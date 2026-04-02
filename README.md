@@ -41,3 +41,4 @@ Các nút “Đăng ký” hiện trỏ tới anchor nội bộ (`#gia`, `#dang-
 
 Số tiền trong `components/landing/Pricing.tsx` dùng hằng số (`PRICE_*`) và `formatVnd()` trong `lib/format.ts` (`Intl.NumberFormat` locale `vi-VN`).
 # minhnhatday
+# minhnhatday
