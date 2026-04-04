@@ -14,6 +14,7 @@ const SECTIONS = [
   { id: "cong-thuc-4c", label: "Công thức 4C" },
   { id: "hanh-trinh", label: "Lộ trình" },
   { id: "ho-tro", label: "Hỗ trợ" },
+  { id: "ket-qua", label: "Kết quả" },
   { id: "tu-duy", label: "Làm chủ" },
   { id: "gia", label: "Học phí" },
   { id: "dang-ky", label: "Đăng ký" },
@@ -100,16 +101,27 @@ export function SectionRail() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, setOpen]);
 
+  /** Màn &lt; lg: không dùng rail — đóng panel để state không kẹt khi resize. */
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const closeIfNarrow = () => {
+      if (!mq.matches) setOpen(false);
+    };
+    closeIfNarrow();
+    mq.addEventListener("change", closeIfNarrow);
+    return () => mq.removeEventListener("change", closeIfNarrow);
+  }, [setOpen]);
+
   const reopenTab = (
     <button
       type="button"
       onClick={() => setOpen(true)}
       aria-controls="section-rail-panel"
       aria-label="Mở mục lục trang"
-      className={`fixed top-1/2 z-55 flex h-28 w-10 max-w-[min(100%,calc(100vw-0.5rem))] -translate-y-1/2 items-center justify-center rounded-r-xl border border-l-0 border-zinc-200/90 bg-white/95 py-2 pl-0 pr-0.5 text-zinc-700 shadow-[4px_0_24px_-8px_rgba(15,23,42,0.18)] ring-1 ring-zinc-900/5 backdrop-blur-md transition-colors hover:bg-zinc-50 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${RAIL_LEFT}`}
+      className={`hidden fixed top-1/2 z-55 h-22 w-5 max-w-[min(100%,calc(100vw-0.5rem))] -translate-y-1/2 items-center justify-center rounded-r-xl border-zinc-200/95 bg-white py-2 pl-0 pr-0.5 text-zinc-800 shadow-[4px_0_32px_-10px_rgba(15,23,42,0.22),inset_0_1px_0_0_#fff] ring-1 ring-zinc-900/8 transition-colors hover:bg-zinc-50 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 lg:inline-flex sm:h-28 sm:w-10 ${RAIL_LEFT}`}
       title="Mở mục lục"
     >
-      <ChevronRight className="h-6 w-6 shrink-0" aria-hidden />
+      <ChevronRight className="size-5 shrink-0 sm:size-6" aria-hidden />
     </button>
   );
 
@@ -121,7 +133,7 @@ export function SectionRail() {
     <nav
       id="section-rail-panel"
       aria-label="Mục lục các phần trên trang"
-      className={`fixed top-1/2 z-55 max-h-[min(28rem,calc(100dvh-2rem-env(safe-area-inset-top)-env(safe-area-inset-bottom)))] w-35 max-w-[min(100%,calc(100vw-1rem))] -translate-y-1/2 overflow-y-auto overscroll-contain rounded-xl border border-zinc-200/90 bg-white/95 py-2 pl-1.5 pr-1 shadow-[0_8px_28px_-10px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/5 backdrop-blur-md ${RAIL_LEFT}`}
+      className={`hidden fixed top-1/2 z-55 max-h-[min(28rem,calc(100dvh-2rem-env(safe-area-inset-top)-env(safe-area-inset-bottom)))] w-[min(100%,calc(100vw-1rem-2.75rem-env(safe-area-inset-left,0px)))] max-w-54 -translate-y-1/2 overflow-y-auto overscroll-contain rounded-xl border border-zinc-200/95 bg-white py-2 pl-1.5 pr-1 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18),inset_0_1px_0_0_#fff] ring-1 ring-zinc-900/8 sm:max-w-none sm:w-35 lg:block ${RAIL_LEFT}`}
     >
       <div className="flex items-center gap-1.5 px-1.5 pb-1.5">
         <span
@@ -148,8 +160,8 @@ export function SectionRail() {
                 aria-current={isActive ? "location" : undefined}
                 className={`group flex items-start gap-1 rounded-md border border-transparent py-1 pl-1 pr-0.5 text-left transition-[color,background-color,box-shadow,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
                   isActive
-                    ? "border-sky-200/90 bg-linear-to-r from-sky-50 to-sky-50/40 text-sky-950 shadow-sm shadow-sky-900/5 ring-1 ring-sky-200/60"
-                    : "text-zinc-600 hover:bg-zinc-50/90 hover:text-zinc-900"
+                    ? "border-sky-200/95 bg-sky-50 text-sky-950 shadow-sm shadow-sky-900/8 ring-1 ring-sky-200/70"
+                    : "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
                 }`}
               >
                 <span

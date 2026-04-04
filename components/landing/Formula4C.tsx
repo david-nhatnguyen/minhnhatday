@@ -52,34 +52,34 @@ const accentStyles: Record<
   }
 > = {
   sky: {
-    card: "border-sky-200/50 bg-linear-to-br from-sky-50/95 via-white to-white",
-    iconWrap: "border-sky-200/85 bg-linear-to-br from-sky-50 to-sky-100/40",
+    card: "border-sky-200/55 bg-linear-to-br from-sky-50 via-white to-white",
+    iconWrap: "border-sky-200/90 bg-linear-to-br from-sky-50 to-sky-100",
     icon: "text-sky-600",
-    quote: "border-sky-200/70 bg-sky-50/50",
+    quote: "border-sky-200/80 bg-sky-50",
     num: "text-sky-600/90",
     hover: "hover:border-sky-300/80 hover:shadow-sky-500/8",
   },
   emerald: {
-    card: "border-emerald-200/50 bg-linear-to-br from-emerald-50/95 via-white to-white",
-    iconWrap: "border-emerald-200/85 bg-linear-to-br from-emerald-50 to-emerald-100/40",
+    card: "border-emerald-200/55 bg-linear-to-br from-emerald-50 via-white to-white",
+    iconWrap: "border-emerald-200/90 bg-linear-to-br from-emerald-50 to-emerald-100",
     icon: "text-emerald-700",
-    quote: "border-emerald-200/70 bg-emerald-50/50",
+    quote: "border-emerald-200/80 bg-emerald-50",
     num: "text-emerald-700/90",
     hover: "hover:border-emerald-300/80 hover:shadow-emerald-500/8",
   },
   amber: {
-    card: "border-amber-200/50 bg-linear-to-br from-amber-50/95 via-white to-white",
-    iconWrap: "border-amber-200/85 bg-linear-to-br from-amber-50 to-amber-100/40",
+    card: "border-amber-200/55 bg-linear-to-br from-amber-50 via-white to-white",
+    iconWrap: "border-amber-200/90 bg-linear-to-br from-amber-50 to-amber-100",
     icon: "text-amber-700",
-    quote: "border-amber-200/70 bg-amber-50/50",
+    quote: "border-amber-200/80 bg-amber-50",
     num: "text-amber-800/90",
     hover: "hover:border-amber-300/80 hover:shadow-amber-500/8",
   },
   rose: {
-    card: "border-rose-200/50 bg-linear-to-br from-rose-50/95 via-white to-white",
-    iconWrap: "border-rose-200/85 bg-linear-to-br from-rose-50 to-rose-100/40",
+    card: "border-rose-200/55 bg-linear-to-br from-rose-50 via-white to-white",
+    iconWrap: "border-rose-200/90 bg-linear-to-br from-rose-50 to-rose-100",
     icon: "text-rose-600",
-    quote: "border-rose-200/70 bg-rose-50/50",
+    quote: "border-rose-200/80 bg-rose-50",
     num: "text-rose-600/90",
     hover: "hover:border-rose-300/80 hover:shadow-rose-500/8",
   },
@@ -89,26 +89,26 @@ export function Formula4C() {
   return (
     <section
       id="cong-thuc-4c"
-      className="section-atmosphere section-atmosphere--sky px-4 py-14 sm:px-6 sm:py-16 lg:py-20"
+      className="section-atmosphere section-atmosphere--sky section-pad"
       aria-labelledby="formula-heading"
     >
       <Reveal>
         <div className="mx-auto max-w-6xl">
           <header className="mx-auto max-w-2xl text-center">
-            <p className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-200/90 bg-white/90 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-700 shadow-sm shadow-zinc-900/5 sm:text-xs">
+            <p className="surface-kicker inline-flex items-center justify-center gap-2 rounded-full border border-zinc-200/95 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-800 sm:text-xs">
               <Braces className="size-3.5 shrink-0 text-sky-600" aria-hidden strokeWidth={2.25} />
               Công thức 4C
             </p>
             <h2
               id="formula-heading"
-              className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-900 sm:mt-5 sm:text-4xl"
+              className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:mt-5 sm:text-4xl"
             >
               Bạn sẽ{" "}
               <span className="bg-linear-to-r from-sky-700 via-cyan-600 to-sky-700 bg-clip-text text-transparent">
                 làm gì?
               </span>
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-pretty text-sm leading-relaxed text-zinc-600 sm:text-base sm:leading-relaxed">
+            <p className="copy-body mx-auto mt-4 max-w-xl text-sm leading-relaxed sm:text-base sm:leading-relaxed">
               Chỉ viết ra lệnh (prompt). Trong khóa học, bạn làm chủ{" "}
               <strong className="font-semibold text-zinc-900">Công thức 4C</strong>{" "}
               — kỹ năng cốt lõi của người tạo ra sản phẩm.
@@ -123,7 +123,7 @@ export function Formula4C() {
               return (
                 <li key={p.title}>
                   <article
-                    className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border p-6 shadow-md shadow-zinc-900/4 ring-1 ring-zinc-900/4 transition [transition-property:transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-7 ${a.card} ${a.hover}`}
+                    className={`surface-content group relative flex h-full flex-col overflow-hidden rounded-2xl border p-6 ring-1 ring-zinc-900/[0.06] transition [transition-property:transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_24px_60px_-24px_rgba(15,23,42,0.15)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-7 ${a.card} ${a.hover}`}
                   >
                     <div className="flex items-start gap-4">
                       <div
@@ -134,7 +134,7 @@ export function Formula4C() {
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
-                          <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">{p.subtitle}</p>
+                          <p className="text-xs font-semibold uppercase tracking-wider text-zinc-600">{p.subtitle}</p>
                           <span className={`font-mono text-xs font-bold tabular-nums ${a.num}`}>
                             {String(step).padStart(2, "0")}
                           </span>

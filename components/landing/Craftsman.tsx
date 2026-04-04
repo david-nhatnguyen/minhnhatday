@@ -15,7 +15,7 @@ const workflow = [
     hint: "bản vẽ, ý tưởng",
     accent: "text-amber-700",
     ring: "ring-amber-200/80",
-    bg: "bg-amber-50/90",
+    bg: "bg-amber-50",
   },
   {
     icon: MessageSquareText,
@@ -23,7 +23,7 @@ const workflow = [
     hint: "lời nói, prompt",
     accent: "text-sky-700",
     ring: "ring-sky-200/80",
-    bg: "bg-sky-50/90",
+    bg: "bg-sky-50",
   },
   {
     icon: Bot,
@@ -31,7 +31,7 @@ const workflow = [
     hint: "AI thực hiện",
     accent: "text-violet-700",
     ring: "ring-violet-200/80",
-    bg: "bg-violet-50/90",
+    bg: "bg-violet-50",
   },
 ] as const;
 
@@ -39,7 +39,7 @@ export function Craftsman() {
   return (
     <section
       id="nghe-nhan"
-      className="section-atmosphere section-atmosphere--cream px-4 py-14 sm:px-6 sm:py-16 lg:py-20"
+      className="section-atmosphere section-atmosphere--cream section-pad"
       aria-labelledby="craft-heading"
     >
       <Reveal>
@@ -63,7 +63,7 @@ export function Craftsman() {
             </p>
             <h2
               id="craft-heading"
-              className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-900 sm:mt-5 sm:text-4xl"
+              className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:mt-5 sm:text-4xl"
             >
               Người{" "}
               <span className="bg-linear-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
@@ -93,7 +93,7 @@ export function Craftsman() {
                     </span>
                   )}
                   <span
-                    className={`inline-flex items-center gap-2 rounded-2xl border border-white/80 px-3 py-2 shadow-sm shadow-zinc-900/5 ring-1 ring-inset ${step.ring} ${step.bg} backdrop-blur-sm sm:px-4 sm:py-2.5`}
+                    className={`surface-kicker inline-flex items-center gap-2 rounded-2xl border border-white/90 px-3 py-2 ring-1 ring-inset ${step.ring} ${step.bg} sm:px-4 sm:py-2.5`}
                   >
                     <Icon className={`size-4 shrink-0 sm:size-4.5 ${step.accent}`} aria-hidden strokeWidth={2} />
                     <span className="text-left leading-tight">
@@ -107,7 +107,7 @@ export function Craftsman() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl">
-            <div className="rounded-3xl border border-amber-200/70 bg-linear-to-br from-amber-50/95 via-white to-zinc-50/90 p-7 shadow-md shadow-amber-900/5 ring-1 ring-amber-900/4 sm:p-10">
+            <div className="surface-content rounded-3xl border border-amber-200/85 bg-linear-to-br from-amber-50 via-white to-white p-7 ring-1 ring-amber-900/[0.08] sm:p-10">
               <p className="text-pretty text-base leading-relaxed text-zinc-700 sm:text-lg sm:leading-relaxed">
                 Hãy tưởng tượng AI như một <strong className="font-semibold text-zinc-900">bộ đồ nghề mộc siêu việt</strong>, và bạn là{" "}
                 <strong className="font-semibold text-zinc-900">người nghệ nhân</strong>. Bạn không cần tự cưa từng khúc gỗ hay gõ từng cái đinh (viết
@@ -116,7 +116,7 @@ export function Craftsman() {
               </p>
 
               <aside
-                className="mt-8 flex gap-4 rounded-2xl border border-sky-200/80 bg-sky-50/70 px-4 py-4 sm:px-5 sm:py-5"
+                className="surface-kicker mt-8 flex gap-4 rounded-2xl border border-sky-200/90 bg-sky-50 px-4 py-4 sm:px-5 sm:py-5"
                 aria-label="Tóm tắt"
               >
                 <span

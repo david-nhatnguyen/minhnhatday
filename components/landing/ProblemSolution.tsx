@@ -58,30 +58,30 @@ export function ProblemSolution() {
   return (
     <section
       id="tai-sao"
-      className="section-atmosphere section-atmosphere--sky px-4 py-14 sm:px-6 sm:py-16 lg:py-20"
+      className="section-atmosphere section-atmosphere--sky section-pad"
       aria-labelledby="problem-heading"
     >
       <motion.div className="mx-auto max-w-6xl" {...motionProps}>
         <motion.div variants={reduce ? undefined : rise} className="text-center">
-          <p className="inline-flex items-center justify-center gap-2 rounded-full border border-sky-200/80 bg-sky-50/90 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-800 shadow-sm shadow-sky-900/5 sm:text-xs">
+          <p className="surface-kicker inline-flex items-center justify-center gap-2 rounded-full border border-sky-200/95 bg-sky-50 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-950 sm:text-xs">
             <Scale className="size-3.5 shrink-0 text-sky-600" aria-hidden strokeWidth={2.25} />
             Bối cảnh
           </p>
           <h2
             id="problem-heading"
-            className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-900 sm:mt-5 sm:text-4xl lg:text-[2.5rem] lg:leading-tight"
+            className="mt-4 text-balance text-2xl font-semibold tracking-tight text-zinc-950 min-[480px]:text-3xl sm:mt-5 sm:text-4xl lg:text-[2.5rem] lg:leading-tight"
           >
             Luật chơi{" "}
             <span className="bg-linear-to-r from-sky-700 via-sky-600 to-cyan-600 bg-clip-text text-transparent">
               đã đổi
             </span>
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-zinc-600 sm:text-base">
+          <p className="copy-body mx-auto mt-3 max-w-2xl text-sm leading-relaxed sm:text-base">
             Cùng một ý tưởng phần mềm — nhưng cách hiện thực hóa không còn giống thời thuê đội và chờ đợi.
           </p>
 
-          <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-zinc-200/90 bg-white/80 px-5 py-6 text-left shadow-md shadow-zinc-900/4 ring-1 ring-zinc-900/4 backdrop-blur-sm sm:px-8 sm:py-7">
-            <p className="text-pretty text-[15px] leading-relaxed text-zinc-600 sm:text-base sm:leading-relaxed">
+          <div className="surface-content mx-auto mt-8 max-w-3xl rounded-2xl border border-zinc-200/95 px-5 py-6 text-left ring-1 ring-zinc-900/[0.07] sm:px-8 sm:py-7">
+            <p className="copy-body text-[15px] leading-relaxed sm:text-base sm:leading-relaxed">
               Trước kia, hiện thực hóa ý tưởng phần mềm thường đồng nghĩa{" "}
               <span className="font-semibold text-zinc-800">phụ thuộc người khác</span> — thuê đội IT tốn kém,
               quy trình phức tạp, giao tiếp mệt mỏi, và đôi khi kết quả vẫn lệch ý tưởng hoặc đầy lỗi.
@@ -103,7 +103,7 @@ export function ProblemSolution() {
           </div>
 
           <article
-            className="group relative flex flex-col rounded-2xl border border-zinc-200/90 bg-linear-to-b from-zinc-50/95 to-white p-6 shadow-sm shadow-zinc-900/4 ring-1 ring-zinc-900/4 transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:border-zinc-300/90 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8"
+            className="surface-content group relative flex flex-col rounded-2xl border border-zinc-200/95 bg-linear-to-b from-zinc-50 to-white p-6 ring-1 ring-zinc-900/[0.06] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:border-zinc-300/90 hover:shadow-[0_22px_56px_-26px_rgba(15,23,42,0.14)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8"
             aria-labelledby="old-model-heading"
           >
             <div className="mb-5 flex items-start justify-between gap-3">
@@ -127,7 +127,7 @@ export function ProblemSolution() {
               {oldPains.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <li key={item.label} className="flex items-center gap-2.5 text-sm text-zinc-600">
+                  <li key={item.label} className="flex items-center gap-2.5 text-sm text-zinc-700">
                     <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-zinc-200/80 bg-white text-zinc-500">
                       <Icon className="size-4" aria-hidden strokeWidth={2} />
                     </span>
@@ -137,14 +137,14 @@ export function ProblemSolution() {
               })}
             </ul>
 
-            <p className="mt-auto text-pretty border-t border-zinc-200/80 pt-5 text-sm leading-relaxed text-zinc-600">
+            <p className="copy-body mt-auto border-t border-zinc-200/80 pt-5 text-sm leading-relaxed">
               Chi phí cao, phụ thuộc đội ngũ bên ngoài, rủi ro truyền đạt sai và chất lượng không kiểm soát được
               trọn vẹn.
             </p>
           </article>
 
           <article
-            className="group relative flex flex-col overflow-hidden rounded-2xl border border-sky-200/80 bg-linear-to-br from-sky-50/98 via-white to-cyan-50/50 p-6 shadow-md shadow-sky-500/10 ring-1 ring-sky-100/80 transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-500/12 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8"
+            className="group relative flex flex-col overflow-hidden rounded-2xl border border-sky-300/70 bg-linear-to-br from-sky-50 via-white to-white p-6 shadow-[inset_0_1px_0_0_#fff,0_20px_52px_-24px_rgba(2,132,199,0.18),0_2px_12px_-4px_rgba(15,23,42,0.06)] ring-1 ring-sky-200/50 transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_0_#fff,0_26px_60px_-22px_rgba(2,132,199,0.22)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8"
             aria-labelledby="vibe-era-heading"
           >
             <div
@@ -154,7 +154,7 @@ export function ProblemSolution() {
 
             <div className="mb-5 flex items-start justify-between gap-3">
               <div>
-                <span className="inline-flex rounded-full border border-sky-200/80 bg-white/95 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sky-800">
+                <span className="inline-flex rounded-full border border-sky-200/90 bg-white px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sky-900">
                   Hôm nay
                 </span>
                 <h3 id="vibe-era-heading" className="mt-3 text-lg font-semibold tracking-tight text-zinc-900">
@@ -162,7 +162,7 @@ export function ProblemSolution() {
                 </h3>
               </div>
               <div
-                className="relative flex size-12 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-sky-500 to-cyan-500 text-white shadow-md shadow-sky-500/30 ring-2 ring-white/90 transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                className="relative flex size-12 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-sky-500 to-cyan-500 text-white shadow-md shadow-sky-500/30 ring-2 ring-white transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 aria-hidden
               >
                 <Sparkles className="size-6" strokeWidth={2} />
@@ -174,7 +174,7 @@ export function ProblemSolution() {
                 const Icon = item.icon;
                 return (
                   <li key={item.label} className="flex items-center gap-2.5 text-sm text-zinc-700">
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-sky-200/70 bg-white/90 text-sky-600 shadow-sm">
+                    <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-sky-200/80 bg-white text-sky-600 shadow-sm">
                       <Icon className="size-4" aria-hidden strokeWidth={2} />
                     </span>
                     <span className="font-semibold leading-snug text-zinc-800">{item.label}</span>

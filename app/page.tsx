@@ -7,6 +7,7 @@ import { WhyCursor } from "@/components/landing/WhyCursor";
 import { Formula4C } from "@/components/landing/Formula4C";
 import { Journey } from "@/components/landing/Journey";
 import { WeeklySupport } from "@/components/landing/WeeklySupport";
+import { CourseOutcomes } from "@/components/landing/CourseOutcomes";
 import { Manifesto } from "@/components/landing/Manifesto";
 import { Pricing } from "@/components/landing/Pricing";
 import { FinalCta } from "@/components/landing/FinalCta";
@@ -22,7 +23,10 @@ export default function Home() {
         Bỏ qua đến nội dung chính
       </a>
       <LandingChrome>
-        <main id="main" className="flex-1">
+        <main
+          id="main"
+          className="flex-1 min-w-0 overflow-x-clip"
+        >
           <Hero />
           <TrustStrip />
           <ProblemSolution />
@@ -31,6 +35,7 @@ export default function Home() {
           <Formula4C />
           <Journey />
           <WeeklySupport />
+          <CourseOutcomes />
           <Manifesto />
           <Pricing />
           <FinalCta />

@@ -82,19 +82,19 @@ export function TrustStrip() {
   return (
     <section
       id="cam-ket"
-      className="section-atmosphere section-atmosphere--ribbon relative border-y border-zinc-200/70 px-4 py-12 sm:px-6 sm:py-14"
+      className="section-atmosphere section-atmosphere--ribbon relative border-y border-zinc-200/75 section-pad-compact"
       aria-labelledby="trust-strip-heading"
     >
       <Reveal>
         <div className="mx-auto w-full max-w-6xl">
           <header className="mx-auto max-w-2xl text-center">
-            <p className="inline-flex items-center justify-center gap-2 rounded-full border border-sky-200/85 bg-white/90 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-800 shadow-sm shadow-sky-900/5 sm:text-xs">
+            <p className="surface-kicker inline-flex items-center justify-center gap-2 rounded-full border border-sky-200/90 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-900 sm:text-xs">
               <GraduationCap className="size-3.5 shrink-0 text-sky-600" aria-hidden strokeWidth={2.25} />
               Trong một khóa học
             </p>
             <h2
               id="trust-strip-heading"
-              className="mt-4 text-balance text-2xl font-semibold tracking-tight text-zinc-900 sm:mt-5 sm:text-3xl lg:text-[2.125rem]"
+              className="mt-4 text-balance text-2xl font-semibold tracking-tight text-zinc-950 sm:mt-5 sm:text-3xl lg:text-[2.125rem]"
             >
               Bạn{" "}
               <span className="bg-linear-to-r from-sky-700 via-cyan-600 to-sky-700 bg-clip-text text-transparent">
@@ -102,7 +102,7 @@ export function TrustStrip() {
               </span>{" "}
               gì?
             </h2>
-            <p className="mt-4 text-pretty text-sm leading-relaxed text-zinc-600 sm:text-base sm:leading-relaxed">
+            <p className="copy-body mt-4 text-sm leading-relaxed sm:text-base sm:leading-relaxed">
               Bốn trụ cột dưới đây giữ cho hành trình <strong className="font-semibold text-zinc-800">ngắn gọn nhưng đủ sâu</strong>:
               đủ thời lượng để làm ra sản phẩm, đủ cấu trúc để không lạc, đủ công cụ hiện đại và đủ hỗ trợ sau mỗi buổi.
             </p>
@@ -114,9 +114,9 @@ export function TrustStrip() {
               const a = accentStyles[item.accent];
               const num = String(index + 1).padStart(2, "0");
               return (
-                <li key={item.title}>
+                <li key={item.title} className="min-w-0">
                   <article
-                    className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-white/90 p-5 shadow-md shadow-zinc-900/4 ring-1 ring-zinc-900/4 backdrop-blur-sm transition [transition-property:transform,box-shadow,border-color,ring-color] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${a.hoverBorder} ${a.hoverRing}`}
+                    className={`surface-content group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/95 p-5 ring-1 ring-zinc-900/[0.07] transition [transition-property:transform,box-shadow,border-color,ring-color] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_22px_60px_-24px_rgba(15,23,42,0.18)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${a.hoverBorder} ${a.hoverRing}`}
                   >
                     <div className="mb-4 flex items-start justify-between gap-2">
                       <div
@@ -130,7 +130,7 @@ export function TrustStrip() {
                       </span>
                     </div>
                     <h3 className="text-base font-semibold tracking-tight text-zinc-900">{item.title}</h3>
-                    <p className="mt-2.5 flex-1 text-pretty text-sm leading-relaxed text-zinc-600">{item.description}</p>
+                    <p className="copy-body mt-2.5 flex-1 text-sm leading-relaxed">{item.description}</p>
                   </article>
                 </li>
               );

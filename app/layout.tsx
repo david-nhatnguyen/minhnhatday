@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-geist-sans",
   subsets: ["latin", "vietnamese"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
@@ -27,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fafafa",
+  themeColor: "#e6edf6",
   width: "device-width",
   initialScale: 1,
 };
@@ -40,9 +46,9 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
+      className={`${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="mesh-bg min-h-full flex flex-col">{children}</body>
+      <body className="mesh-bg min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
 }

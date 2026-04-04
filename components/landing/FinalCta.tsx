@@ -26,11 +26,11 @@ export function FinalCta() {
   return (
     <section
       id="dang-ky"
-      className="section-atmosphere section-atmosphere--sky px-4 py-14 sm:px-6 sm:py-16 lg:py-20"
+      className="section-atmosphere section-atmosphere--sky section-pad"
       aria-labelledby="final-cta-heading"
     >
       <motion.div
-        className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-zinc-200/90 bg-linear-to-br from-white via-white to-sky-50/40 px-6 py-12 text-center shadow-lg shadow-sky-900/6 ring-1 ring-zinc-900/4 sm:px-10 sm:py-14"
+        className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-zinc-200/95 bg-linear-to-br from-white via-white to-sky-50 px-5 py-10 text-center shadow-[inset_0_1px_0_0_#fff,0_28px_64px_-28px_rgba(15,23,42,0.14),0_4px_16px_-8px_rgba(2,132,199,0.08)] ring-1 ring-zinc-900/[0.08] min-[480px]:px-6 min-[480px]:py-12 sm:px-10 sm:py-14"
         initial={reduce ? undefined : "hidden"}
         whileInView={reduce ? undefined : "visible"}
         viewport={{ once: true, margin: "-10% 0px -8% 0px", amount: 0.15 }}
@@ -47,7 +47,7 @@ export function FinalCta() {
 
         <motion.p
           variants={reduce ? undefined : rise}
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-sky-200/85 bg-sky-50/95 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-sky-900 shadow-sm sm:text-xs"
+          className="surface-kicker inline-flex items-center justify-center gap-2 rounded-full border border-sky-200/95 bg-sky-50 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-sky-950 sm:text-xs"
         >
           <Sparkles className="size-3.5 shrink-0 text-sky-600" aria-hidden strokeWidth={2.25} />
           Bước tiếp theo
@@ -56,7 +56,7 @@ export function FinalCta() {
         <motion.h2
           variants={reduce ? undefined : rise}
           id="final-cta-heading"
-          className="mt-5 text-balance text-2xl font-semibold tracking-tight text-zinc-900 sm:mt-6 sm:text-3xl"
+          className="mt-5 text-balance text-2xl font-semibold tracking-tight text-zinc-950 sm:mt-6 sm:text-3xl"
         >
           Bắt tay vào xây dựng{" "}
           <span className="bg-linear-to-r from-sky-700 via-cyan-600 to-sky-800 bg-clip-text text-transparent">
@@ -67,7 +67,7 @@ export function FinalCta() {
 
         <motion.p
           variants={reduce ? undefined : rise}
-          className="mx-auto mt-4 max-w-lg text-pretty text-sm leading-relaxed text-zinc-600 sm:text-base sm:leading-relaxed"
+          className="copy-body mx-auto mt-4 max-w-lg text-sm leading-relaxed sm:text-base sm:leading-relaxed"
         >
           Sẵn sàng cho hành trình{" "}
           <span className="inline-flex items-center gap-1 font-semibold text-zinc-800">
