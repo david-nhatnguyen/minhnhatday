@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Flame, Crown, Check } from "lucide-react";
+import { Flame, Crown, Check, MessageCircle } from "lucide-react";
 import { formatVnd } from "@/lib/format";
+import { ZALO_CHAT_URL } from "@/lib/contact";
 import { Reveal } from "@/components/motion/Reveal";
 
 const PRICE_BASIC = 3_999_000;
@@ -75,12 +75,15 @@ export function Pricing() {
                 </li>
               ))}
             </ul>
-            <Link
-              href="#dang-ky"
-              className="mt-10 inline-flex min-h-11 w-full items-center justify-center rounded-full border border-zinc-300 bg-zinc-900 py-3 text-md font-semibold text-white transition hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+            <a
+              href={ZALO_CHAT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-zinc-300 bg-zinc-900 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
-              Đăng ký học ngay — gói cơ bản
-            </Link>
+              <MessageCircle className="size-4 shrink-0 opacity-90" aria-hidden strokeWidth={2} />
+              Đăng ký qua Zalo — gói cơ bản
+            </a>
           </article>
 
           <article className="on-light-panel relative flex flex-col overflow-hidden rounded-3xl border border-sky-400/65 bg-gradient-to-b from-sky-50 via-white to-white p-6 shadow-[inset_0_1px_0_0_#fff,0_24px_64px_-22px_rgba(2,132,199,0.28),0_2px_12px_-4px_rgba(15,23,42,0.06),0_0_0_1px_rgb(56_189_248/0.14),0_0_40px_-8px_rgb(14_165_233/0.2)] ring-1 ring-sky-400/35 transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_0_#fff,0_32px_72px_-20px_rgba(2,132,199,0.34),0_0_0_1px_rgb(56_189_248/0.18),0_0_56px_-10px_rgb(34_211_238/0.22)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8">
@@ -130,12 +133,15 @@ export function Pricing() {
                 <span>Tối ưu theo dự án cá nhân của bạn</span>
               </li>
             </ul>
-            <Link
-              href="#dang-ky"
-              className="mt-10 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-gradient-to-r from-sky-600 to-cyan-500 py-3 text-md font-semibold text-white shadow-lg shadow-sky-500/30 transition hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+            <a
+              href={ZALO_CHAT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-600 to-cyan-500 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/30 transition hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
-              Đăng ký học ngay — gói 1-1
-            </Link>
+              <MessageCircle className="size-4 shrink-0 opacity-95" aria-hidden strokeWidth={2} />
+              Đăng ký qua Zalo — gói 1-1
+            </a>
           </article>
         </div>
         </div>
