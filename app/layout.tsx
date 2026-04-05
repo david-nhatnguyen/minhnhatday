@@ -21,11 +21,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Minh Nhật Day — Vibe Coding & Cursor | Khóa học 8 giờ",
+  title: "Minh Nhật Đây — Vibe Coding & Cursor | Khóa học 8 giờ",
   description:
     "Biến ý tưởng thành website và ứng dụng với AI & Cursor. Không cần biết code. Công thức 4C, 10 chương thực chiến cùng Nguyễn Minh Nhật.",
   openGraph: {
-    title: "Minh Nhật Day — Vibe Coding & Cursor",
+    title: "Minh Nhật Đây — Vibe Coding & Cursor",
     description:
       "Hành trình tự build sản phẩm thực tế trong 8 tiếng. Premium, hiện đại, đáng tin.",
     locale: "vi_VN",

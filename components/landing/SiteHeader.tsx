@@ -37,7 +37,7 @@ export function SiteHeader() {
             href="#top"
             className="truncate text-md font-semibold tracking-tight text-zinc-50 [text-shadow:0_0_24px_rgb(255_255_255_/0.12)] transition-colors duration-200 hover:text-sky-300 focus-visible:rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
           >
-            Minh Nhật Day
+            Minh Nhật Đây
           </Link>
         </div>
         <nav aria-label="Điều hướng chính" className="hidden items-center gap-6 md:flex">

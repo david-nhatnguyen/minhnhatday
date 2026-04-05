@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-hero flex-col justify-center overflow-x-hidden bg-transparent px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] min-[480px]:px-5 sm:px-6 sm:py-8"
+      className="relative flex min-h-hero min-w-0 flex-col justify-center bg-transparent px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] min-[480px]:px-5 sm:px-6 sm:py-8"
       aria-labelledby="hero-heading"
     >
       <div className="relative mx-auto flex w-full max-w-5xl flex-col text-center">
