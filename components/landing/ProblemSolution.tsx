@@ -1,5 +1,3 @@
-"use client";
-
 import {
   AlertTriangle,
   Banknote,
@@ -11,26 +9,6 @@ import {
   Wand2,
   Zap,
 } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
-
-const container = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.06,
-    },
-  },
-} as const;
-
-const rise = {
-  hidden: { opacity: 0, y: 22 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.52, ease: [0.22, 1, 0.36, 1] },
-  },
-} as const;
 
 const oldPains = [
   { icon: Banknote, label: "Chi phí tốn kém" },
@@ -45,38 +23,28 @@ const newWins = [
 ] as const;
 
 export function ProblemSolution() {
-  const reduce = useReducedMotion();
-  const motionProps = reduce
-    ? {}
-    : {
-        initial: "hidden" as const,
-        whileInView: "visible" as const,
-        viewport: { once: true, margin: "-10% 0px -8% 0px", amount: 0.15 },
-        variants: container,
-      };
-
   return (
     <section
       id="tai-sao"
       className="section-atmosphere section-atmosphere--sky section-pad"
       aria-labelledby="problem-heading"
     >
-      <motion.div className="mx-auto max-w-6xl" {...motionProps}>
-        <motion.div variants={reduce ? undefined : rise} className="text-center">
+      <div className="mx-auto max-w-6xl">
+        <div className="text-center">
           <p className="surface-kicker inline-flex items-center justify-center gap-2 rounded-full border border-sky-200/95 bg-sky-50 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-950 sm:text-xs">
             <Scale className="size-3.5 shrink-0 text-sky-600" aria-hidden strokeWidth={2.25} />
             Bối cảnh
           </p>
           <h2
             id="problem-heading"
-            className="mt-4 text-balance text-2xl font-semibold tracking-tight text-zinc-950 min-[480px]:text-3xl sm:mt-5 sm:text-4xl lg:text-[2.5rem] lg:leading-tight"
+            className="heading-section-glow mt-4 text-balance text-3xl font-semibold tracking-tight min-[480px]:text-4xl sm:mt-5 sm:text-5xl lg:text-[2.65rem] lg:leading-[1.08]"
           >
             Luật chơi{" "}
-            <span className="bg-linear-to-r from-sky-700 via-sky-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="gradient-word-glow bg-linear-to-r from-sky-300 via-cyan-200 to-cyan-300 bg-clip-text text-transparent">
               đã đổi
             </span>
           </h2>
-          <p className="copy-body mx-auto mt-3 max-w-2xl text-sm leading-relaxed sm:text-base">
+          <p className="copy-body mx-auto mt-3 max-w-2xl text-base leading-relaxed sm:text-lg">
             Cùng một ý tưởng phần mềm — nhưng cách hiện thực hóa không còn giống thời thuê đội và chờ đợi.
           </p>
 
@@ -87,17 +55,14 @@ export function ProblemSolution() {
               quy trình phức tạp, giao tiếp mệt mỏi, và đôi khi kết quả vẫn lệch ý tưởng hoặc đầy lỗi.
             </p>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={reduce ? undefined : rise}
-          className="relative mt-12 grid gap-5 md:grid-cols-2 md:gap-6 lg:mt-14"
-        >
+        <div className="relative mt-12 grid gap-5 md:grid-cols-2 md:gap-6 lg:mt-14">
           <div
             className="pointer-events-none absolute left-1/2 top-[42%] z-10 hidden -translate-x-1/2 -translate-y-1/2 md:block"
             aria-hidden
           >
-            <span className="flex size-11 items-center justify-center rounded-full border border-zinc-200/90 bg-white text-[10px] font-bold uppercase tracking-widest text-zinc-400 shadow-md shadow-zinc-900/8 ring-4 ring-sky-50">
+            <span className="flex size-11 items-center justify-center rounded-full border border-zinc-600/80 bg-zinc-900/90 text-[10px] font-bold uppercase tracking-widest text-zinc-300 shadow-md shadow-black/40 ring-4 ring-sky-500/15">
               vs
             </span>
           </div>
@@ -127,7 +92,7 @@ export function ProblemSolution() {
               {oldPains.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <li key={item.label} className="flex items-center gap-2.5 text-sm text-zinc-700">
+                  <li key={item.label} className="flex items-center gap-2.5 text-md text-zinc-700">
                     <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-zinc-200/80 bg-white text-zinc-500">
                       <Icon className="size-4" aria-hidden strokeWidth={2} />
                     </span>
@@ -137,7 +102,7 @@ export function ProblemSolution() {
               })}
             </ul>
 
-            <p className="copy-body mt-auto border-t border-zinc-200/80 pt-5 text-sm leading-relaxed">
+            <p className="copy-body mt-auto border-t border-zinc-200/80 pt-5 text-md leading-relaxed">
               Chi phí cao, phụ thuộc đội ngũ bên ngoài, rủi ro truyền đạt sai và chất lượng không kiểm soát được
               trọn vẹn.
             </p>
@@ -173,7 +138,7 @@ export function ProblemSolution() {
               {newWins.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <li key={item.label} className="flex items-center gap-2.5 text-sm text-zinc-700">
+                  <li key={item.label} className="flex items-center gap-2.5 text-md text-zinc-700">
                     <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-sky-200/80 bg-white text-sky-600 shadow-sm">
                       <Icon className="size-4" aria-hidden strokeWidth={2} />
                     </span>
@@ -183,14 +148,14 @@ export function ProblemSolution() {
               })}
             </ul>
 
-            <p className="mt-auto text-pretty border-t border-sky-200/60 pt-5 text-sm leading-relaxed text-zinc-700 sm:text-[0.9375rem]">
+            <p className="mt-auto text-pretty border-t border-sky-200/60 pt-5 text-md leading-relaxed text-zinc-700 sm:text-[0.9375rem]">
               Bạn có thể <strong className="font-semibold text-zinc-900">tự xây dựng mọi thứ đúng ý muốn</strong> — đơn
               giản, hiệu quả và nhanh chóng chưa từng có.{" "}
               <span className="font-medium text-sky-800">Chào mừng đến cách làm mới.</span>
             </p>
           </article>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

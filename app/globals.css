@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  /* Nền canvas đậm hơn một bậc → thẻ trắng / section panel tách lớp rõ */
-  --background: #dfe7f1;
-  --foreground: #0c0c0f;
-  --muted: #5c5f69;
-  --accent: #0369a1;
-  --accent-warm: #b45309;
+  /* Canvas đen + mesh — mọi section atmosphere tối bán trong suốt; thẻ surface / panel sáng nổi khối */
+  --background: #060608;
+  --foreground: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #38bdf8;
+  --accent-warm: #fbbf24;
   --surface: #ffffff;
-  --surface-elevated: #f8fafc;
-  --ring: #0284c7;
-  --hero-surface: #e6edf6;
+  --surface-elevated: #fafafa;
+  --ring: #38bdf8;
+  --hero-surface: transparent;
   /* Sticky header: h-14 + safe-area (matches SiteHeader) */
   --site-header-h: calc(3.5rem + env(safe-area-inset-top, 0px));
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 @layer components {
@@ -29,36 +29,65 @@
    * Bề mặt nội dung nổi: trắng đặc + inset highlight + bóng tách lớp khỏi nền section.
    * Dùng kèm border + ring từ Tailwind trên từng khối.
    */
-  /* Nội dung chính: viền tóc + bóng sâu hơn → tách khỏi nền section rõ rệt */
+  /* Nội dung chính: halo chỉ bằng box-shadow (tránh filter — rất tốn GPU khi nhiều thẻ, dễ giật lúc load) */
   .surface-content {
     background-color: #fff;
     box-shadow:
       inset 0 1px 0 0 rgb(255 255 255),
-      0 0 0 1px rgb(15 23 42 / 0.075),
-      0 32px 72px -34px rgb(15 23 42 / 0.22),
-      0 8px 22px -10px rgb(15 23 42 / 0.11);
+      0 0 0 1px rgb(255 255 255 / 0.32),
+      0 28px 80px -36px rgb(0 0 0 / 0.65),
+      0 0 52px -18px rgb(56 189 248 / 0.22),
+      0 0 88px -30px rgb(167 139 250 / 0.12);
   }
 
-  /* Hero headline block: giữ bóng nổi, không viền (không hairline trong shadow) */
+  /* Hero headline: thêm một lớp glow ngoài (vẫn không dùng filter) */
   .hero-copy-messaging.surface-content {
     box-shadow:
       inset 0 1px 0 0 rgb(255 255 255),
-      0 32px 72px -34px rgb(15 23 42 / 0.2),
-      0 8px 22px -10px rgb(15 23 42 / 0.1);
+      0 0 0 1px rgb(255 255 255 / 0.38),
+      0 36px 90px -40px rgb(0 0 0 / 0.55),
+      0 0 64px -20px rgb(34 211 238 / 0.22),
+      0 0 100px -36px rgb(56 189 248 / 0.14),
+      0 0 120px -40px rgb(34 211 238 / 0.08);
   }
 
   .surface-kicker {
     background-color: #fff;
     box-shadow:
       inset 0 1px 0 0 rgb(255 255 255 / 0.9),
-      0 1px 2px rgb(15 23 42 / 0.06),
-      0 12px 32px -14px rgb(15 23 42 / 0.15);
+      0 1px 2px rgb(0 0 0 / 0.2),
+      0 12px 40px -12px rgb(0 0 0 / 0.45),
+      0 0 36px -14px rgb(56 189 248 / 0.16),
+      0 0 56px -22px rgb(167 139 250 / 0.07);
   }
 
-  /* Đoạn mô tả chính: đậm hơn zinc-600, text-pretty theo Web Interface Guidelines */
+  /* Mục lục nổi: viền chrome + edge sáng sky */
+  .rail-glow-tab {
+    box-shadow:
+      4px 0 40px -12px rgba(0, 0, 0, 0.55),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.07),
+      0 0 0 1px rgb(56 189 248 / 0.16),
+      2px 0 36px -8px rgb(56 189 248 / 0.2);
+  }
+
+  .rail-glow-panel {
+    box-shadow:
+      0 16px 48px -12px rgba(0, 0, 0, 0.55),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.07),
+      0 0 0 1px rgb(56 189 248 / 0.14),
+      0 0 44px -10px rgb(56 189 248 / 0.16),
+      0 0 72px -20px rgb(167 139 250 / 0.09);
+  }
+
+  /* Đoạn mô tả: trong thẻ sáng = chữ đậm; trên nền section tối = xám sáng (override bên dưới) */
   .copy-body {
     text-wrap: pretty;
     color: rgb(63 63 70); /* zinc-700 */
+  }
+
+  /* Panel sáng (gradient) nằm trong section tối — copy-body vẫn đậm */
+  .on-light-panel .copy-body {
+    color: rgb(63 63 70);
   }
 }
 
@@ -80,14 +109,10 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
+/* scroll-behavior: auto — mặc định nhanh; tránh smooth toàn trang (hay gây lag trackpad/mouse wheel) */
 html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  scroll-behavior: auto;
+  background-color: var(--background);
 }
 
 body {
@@ -95,7 +120,8 @@ body {
   color: var(--foreground);
   font-feature-settings: "kern" 1, "liga" 1;
   touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(2, 132, 199, 0.14);
+  overflow-x: clip;
+  -webkit-tap-highlight-color: rgba(56, 189, 248, 0.2);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
@@ -104,17 +130,64 @@ body {
 main h1,
 main h2 {
   font-family: var(--font-outfit), var(--font-sans-primary), ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 
 main h3 {
   font-family: var(--font-outfit), var(--font-sans-primary), ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: -0.018em;
+  letter-spacing: -0.02em;
+}
+
+/* Tiêu đề section trên nền tối — gần trắng + halo diffuse (không dùng trong .on-light-panel) */
+@layer utilities {
+  .heading-section-glow {
+    color: rgb(254 252 255);
+    text-shadow:
+      0 0 1px rgb(255 255 255 / 0.45),
+      0 0 52px rgb(56 189 248 / 0.2),
+      0 0 100px rgb(167 139 250 / 0.1),
+      0 2px 12px rgb(0 0 0 / 0.55);
+  }
+
+  /* Chữ gradient H2 — filter chỉ từ lg trở lên (mobile bỏ để first paint mượt) */
+  .gradient-word-glow {
+    filter: none;
+  }
+
+  @media (min-width: 1024px) {
+    .gradient-word-glow {
+      filter: drop-shadow(0 0 14px rgb(56 189 248 / 0.45)) drop-shadow(0 0 28px rgb(34 211 238 / 0.22));
+    }
+  }
+
+  .hero-eyebrow-glow {
+    color: rgb(228 228 231);
+    text-shadow:
+      0 0 28px rgb(56 189 248 / 0.25),
+      0 0 1px rgb(255 255 255 / 0.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heading-section-glow {
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.65);
+  }
+  .gradient-word-glow {
+    filter: none;
+  }
+  .hero-eyebrow-glow {
+    text-shadow: none;
+  }
+
+}
+
+.on-light-panel h2 {
+  text-shadow: none;
 }
 
 ::selection {
-  background-color: rgba(14, 165, 233, 0.22);
-  color: var(--foreground);
+  background-color: rgba(56, 189, 248, 0.35);
+  color: #fafafa;
 }
 
 /* Anchor links: offset sticky header (h-14) + safe area */
@@ -122,15 +195,16 @@ main section[id] {
   scroll-margin-top: calc(3.5rem + env(safe-area-inset-top, 0px) + 0.5rem);
 }
 
-/* Page backdrop: canvas tối hơn + mesh teal/amber + vignette nhẹ → nội dung trung tâm nổi hơn */
+/* Page backdrop: đen nghệ thuật + aurora cyan/violet/amber + grain nhẹ */
 .mesh-bg {
   position: relative;
   background-color: var(--background);
   background-image:
-    radial-gradient(ellipse 115% 82% at 50% -28%, rgba(3, 105, 161, 0.17), transparent 54%),
-    radial-gradient(ellipse 60% 46% at 100% 6%, rgba(217, 119, 6, 0.085), transparent 50%),
-    radial-gradient(ellipse 52% 40% at 0% 36%, rgba(30, 41, 59, 0.075), transparent 48%),
-    linear-gradient(180deg, #eef2f8 0%, #dfe7f1 38%, #cfd8e6 72%, #c5cedd 100%);
+    radial-gradient(ellipse 120% 90% at 50% -20%, rgba(56, 189, 248, 0.14), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 100% 0%, rgba(167, 139, 250, 0.1), transparent 50%),
+    radial-gradient(ellipse 65% 50% at 0% 55%, rgba(251, 191, 36, 0.06), transparent 48%),
+    radial-gradient(ellipse 80% 60% at 70% 100%, rgba(6, 182, 212, 0.08), transparent 52%),
+    linear-gradient(180deg, #0b0c10 0%, #060608 38%, #030304 72%, #000000 100%);
 }
 
 .mesh-bg::before {
@@ -139,27 +213,34 @@ main section[id] {
   inset: -18%;
   z-index: -2;
   pointer-events: none;
+  contain: paint;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   background:
-    radial-gradient(ellipse 70% 50% at 20% 12%, rgba(2, 132, 199, 0.1), transparent 52%),
-    radial-gradient(ellipse 58% 46% at 92% 24%, rgba(245, 158, 11, 0.065), transparent 48%),
-    radial-gradient(ellipse 48% 38% at 42% 88%, rgba(51, 65, 85, 0.055), transparent 50%);
-  animation: mesh-drift 44s ease-in-out infinite;
-  will-change: transform;
+    radial-gradient(ellipse 55% 45% at 18% 22%, rgba(34, 211, 238, 0.09), transparent 50%),
+    radial-gradient(ellipse 50% 42% at 88% 18%, rgba(129, 140, 248, 0.08), transparent 48%),
+    radial-gradient(ellipse 45% 38% at 48% 92%, rgba(251, 191, 36, 0.05), transparent 50%),
+    radial-gradient(ellipse 35% 30% at 62% 48%, rgba(14, 165, 233, 0.06), transparent 45%);
+  /* Trễ sau frame đầu — tránh tranh GPU với font + layout lúc hydrate */
+  animation: mesh-drift 48s ease-in-out 1.4s infinite;
 }
 
-/* Vignette cực nhẹ: ép khối nội dung trung tâm, không làm tối quá */
+/* Vignette: tối mép, sáng nhẹ trung tâm — kéo mắt vào nội dung */
 .mesh-bg::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse 85% 75% at 50% 45%,
-    transparent 0%,
-    transparent 55%,
-    rgba(15, 23, 42, 0.035) 100%
-  );
+  background:
+    radial-gradient(ellipse 75% 65% at 50% 38%, transparent 0%, transparent 42%, rgba(0, 0, 0, 0.5) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.015) 2px,
+      rgba(255, 255, 255, 0.015) 3px
+    );
 }
 
 @keyframes mesh-drift {
@@ -167,11 +248,8 @@ main section[id] {
   100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
-  38% {
-    transform: translate3d(2.2%, -1.8%, 0) scale(1.02);
-  }
-  72% {
-    transform: translate3d(-1.6%, 2.2%, 0) scale(0.99);
+  50% {
+    transform: translate3d(0.9%, -0.7%, 0) scale(1.004);
   }
 }
 
@@ -182,7 +260,7 @@ main section[id] {
   }
 }
 
-/* Section shells: alternating atmosphere */
+/* Section shells: nền tối bán trong suốt — mesh xuyên qua, mỗi loại một sắc ambient */
 .section-atmosphere {
   position: relative;
   isolation: isolate;
@@ -193,10 +271,24 @@ main section[id] {
   z-index: 1;
 }
 
-/* Nền section gần như đặc (hex) — ít “lọt” mesh phía sau → block chữ/card tách lớp rõ */
+/* Copy trên nền section tối — sáng hơn, dễ đọc */
+main .section-atmosphere .copy-body {
+  color: rgb(228 228 231); /* zinc-200 */
+  line-height: 1.65;
+}
+
+main .section-atmosphere .surface-content .copy-body {
+  color: rgb(63 63 70); /* zinc-700 */
+}
+
 .section-atmosphere--ribbon {
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 42%, #f1f5f9 100%);
-  box-shadow: inset 0 1px 0 #fff;
+  background: linear-gradient(
+    180deg,
+    rgb(9 9 11 / 0.78) 0%,
+    rgb(15 23 42 / 0.72) 48%,
+    rgb(9 9 11 / 0.82) 100%
+  );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05);
 }
 
 .section-atmosphere--ribbon::before {
@@ -204,13 +296,18 @@ main section[id] {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse 110% 70% at 50% 0%, rgba(14, 165, 233, 0.05), transparent 58%);
+  background: radial-gradient(ellipse 100% 75% at 50% -10%, rgba(56, 189, 248, 0.14), transparent 55%);
   pointer-events: none;
 }
 
 .section-atmosphere--sky {
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 38%, #eaf2fb 100%);
-  box-shadow: inset 0 1px 0 #fff;
+  background: linear-gradient(
+    180deg,
+    rgb(12 17 28 / 0.82) 0%,
+    rgb(8 12 22 / 0.76) 45%,
+    rgb(6 10 18 / 0.85) 100%
+  );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
 }
 
 .section-atmosphere--sky::before {
@@ -218,13 +315,20 @@ main section[id] {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse 100% 62% at 50% 0%, rgba(14, 165, 233, 0.045), transparent 56%);
+  background:
+    radial-gradient(ellipse 90% 65% at 50% 0%, rgba(14, 165, 233, 0.12), transparent 52%),
+    radial-gradient(ellipse 55% 45% at 100% 80%, rgba(6, 182, 212, 0.08), transparent 45%);
   pointer-events: none;
 }
 
 .section-atmosphere--cream {
-  background: linear-gradient(180deg, #fffefb 0%, #fff7ed 48%, #fffbeb 100%);
-  box-shadow: inset 0 1px 0 #fff;
+  background: linear-gradient(
+    180deg,
+    rgb(15 12 9 / 0.8) 0%,
+    rgb(12 10 8 / 0.74) 50%,
+    rgb(10 9 7 / 0.82) 100%
+  );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
 }
 
 .section-atmosphere--cream::before {
@@ -232,13 +336,20 @@ main section[id] {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse 90% 58% at 80% 18%, rgba(245, 158, 11, 0.05), transparent 54%);
+  background:
+    radial-gradient(ellipse 85% 60% at 85% 15%, rgba(251, 191, 36, 0.11), transparent 50%),
+    radial-gradient(ellipse 70% 50% at 10% 90%, rgba(245, 158, 11, 0.06), transparent 48%);
   pointer-events: none;
 }
 
 .section-atmosphere--slate {
-  background: linear-gradient(180deg, #e2e8f0 0%, #eef2f7 50%, #f1f5f9 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  background: linear-gradient(
+    180deg,
+    rgb(15 17 22 / 0.85) 0%,
+    rgb(10 12 16 / 0.78) 50%,
+    rgb(8 10 14 / 0.86) 100%
+  );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.045);
 }
 
 .section-atmosphere--slate::before {
@@ -246,13 +357,20 @@ main section[id] {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse 85% 52% at 15% 88%, rgba(71, 85, 105, 0.05), transparent 50%);
+  background:
+    radial-gradient(ellipse 80% 55% at 20% 100%, rgba(148, 163, 184, 0.1), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 90% 20%, rgba(100, 116, 139, 0.08), transparent 45%);
   pointer-events: none;
 }
 
 .section-atmosphere--violet {
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 45%, #f5f3ff 100%);
-  box-shadow: inset 0 1px 0 #fff;
+  background: linear-gradient(
+    180deg,
+    rgb(14 11 22 / 0.82) 0%,
+    rgb(10 9 16 / 0.76) 50%,
+    rgb(8 7 14 / 0.84) 100%
+  );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
 }
 
 .section-atmosphere--violet::before {
@@ -260,18 +378,20 @@ main section[id] {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse 95% 56% at 50% 100%, rgba(79, 70, 229, 0.04), transparent 56%);
+  background:
+    radial-gradient(ellipse 95% 60% at 50% 100%, rgba(139, 92, 246, 0.14), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 15% 25%, rgba(167, 139, 250, 0.08), transparent 45%);
   pointer-events: none;
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translate3d(0, 8px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -286,7 +406,7 @@ main section[id] {
 }
 
 .animate-fade-up {
-  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fade-up 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .animate-delay-1 {

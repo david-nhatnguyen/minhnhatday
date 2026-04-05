@@ -94,22 +94,22 @@ export function Journey() {
             </p>
             <h2
               id="journey-heading"
-              className="mt-3 text-balance text-2xl font-semibold tracking-tight text-zinc-950 sm:mt-4 sm:text-3xl"
+              className="heading-section-glow mt-3 text-balance text-3xl font-semibold tracking-tight sm:mt-4 sm:text-4xl sm:leading-tight"
             >
               Hành trình{" "}
-              <span className="bg-linear-to-r from-amber-700 via-orange-600 to-amber-600 bg-clip-text text-transparent">
+              <span className="gradient-word-glow bg-linear-to-r from-amber-300 via-orange-300 to-amber-200 bg-clip-text text-transparent">
                 8 tiếng
               </span>
             </h2>
-            <p className="copy-body mx-auto mt-2 flex max-w-md flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs sm:mt-3 sm:text-sm">
+            <p className="copy-body mx-auto mt-2 flex max-w-md flex-wrap items-center justify-center gap-x-2 gap-y-1 text-md sm:mt-3 sm:text-base">
               <span className="surface-kicker inline-flex items-center gap-1 rounded-full border border-zinc-200/95 px-2 py-0.5 font-medium text-zinc-800">
                 <Layers className="size-3 text-amber-600" aria-hidden strokeWidth={2} />
                 10 chương thực chiến
               </span>
-              <span className="text-zinc-300" aria-hidden>
+              <span className="text-zinc-500" aria-hidden>
                 ·
               </span>
-              <span className="text-zinc-800">4 chặng chính</span>
+              <span className="text-zinc-200">4 chặng chính</span>
             </p>
           </header>
 
@@ -127,7 +127,7 @@ export function Journey() {
                   <li key={s.step} className="relative flex gap-3 sm:gap-4">
                     <div className="relative z-1 flex w-10 shrink-0 justify-center sm:w-11">
                       <span
-                        className={`flex size-9 items-center justify-center rounded-full font-mono text-[13px] font-bold tabular-nums tracking-tight antialiased sm:size-10 sm:text-sm ${a.knot}`}
+                        className={`flex size-9 items-center justify-center rounded-full font-mono text-[13px] font-bold tabular-nums tracking-tight antialiased sm:size-10 sm:text-md ${a.knot}`}
                         aria-hidden
                       >
                         {s.step}

@@ -82,7 +82,7 @@ export function TrustStrip() {
   return (
     <section
       id="cam-ket"
-      className="section-atmosphere section-atmosphere--ribbon relative border-y border-zinc-200/75 section-pad-compact"
+      className="section-atmosphere section-atmosphere--ribbon relative border-y border-zinc-700/50 section-pad-compact"
       aria-labelledby="trust-strip-heading"
     >
       <Reveal>
@@ -94,16 +94,16 @@ export function TrustStrip() {
             </p>
             <h2
               id="trust-strip-heading"
-              className="mt-4 text-balance text-2xl font-semibold tracking-tight text-zinc-950 sm:mt-5 sm:text-3xl lg:text-[2.125rem]"
+              className="heading-section-glow mt-4 text-balance text-3xl font-semibold tracking-tight sm:mt-5 sm:text-4xl lg:text-[2.35rem] lg:leading-tight"
             >
               Bạn{" "}
-              <span className="bg-linear-to-r from-sky-700 via-cyan-600 to-sky-700 bg-clip-text text-transparent">
+              <span className="gradient-word-glow bg-linear-to-r from-sky-300 via-cyan-200 to-sky-300 bg-clip-text text-transparent">
                 nhận được
               </span>{" "}
               gì?
             </h2>
-            <p className="copy-body mt-4 text-sm leading-relaxed sm:text-base sm:leading-relaxed">
-              Bốn trụ cột dưới đây giữ cho hành trình <strong className="font-semibold text-zinc-800">ngắn gọn nhưng đủ sâu</strong>:
+            <p className="copy-body mt-4 text-base leading-relaxed sm:text-lg sm:leading-relaxed">
+              Bốn trụ cột dưới đây giữ cho hành trình <strong className="font-semibold text-zinc-100">ngắn gọn nhưng đủ sâu</strong>:
               đủ thời lượng để làm ra sản phẩm, đủ cấu trúc để không lạc, đủ công cụ hiện đại và đủ hỗ trợ sau mỗi buổi.
             </p>
           </header>
@@ -130,7 +130,7 @@ export function TrustStrip() {
                       </span>
                     </div>
                     <h3 className="text-base font-semibold tracking-tight text-zinc-900">{item.title}</h3>
-                    <p className="copy-body mt-2.5 flex-1 text-sm leading-relaxed">{item.description}</p>
+                    <p className="copy-body mt-2.5 flex-1 text-md leading-relaxed">{item.description}</p>
                   </article>
                 </li>
               );

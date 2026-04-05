@@ -45,7 +45,7 @@ export function Craftsman() {
       <Reveal>
         <div className="mx-auto max-w-6xl">
           <header className="mx-auto max-w-2xl text-center">
-            <p className="inline-flex items-center justify-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-amber-900/80 sm:text-xs">
+            <p className="inline-flex items-center justify-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-amber-200/90 sm:text-xs">
               <span
                 className="inline-flex size-8 items-center justify-center rounded-xl border border-amber-200/90 bg-linear-to-br from-amber-50 to-white shadow-sm shadow-amber-900/5"
                 aria-hidden
@@ -63,14 +63,14 @@ export function Craftsman() {
             </p>
             <h2
               id="craft-heading"
-              className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:mt-5 sm:text-4xl"
+              className="heading-section-glow mt-4 text-balance text-3xl font-semibold tracking-tight sm:mt-5 sm:text-5xl sm:leading-[1.08]"
             >
               Người{" "}
-              <span className="bg-linear-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+              <span className="gradient-word-glow bg-linear-to-r from-amber-300 via-orange-300 to-amber-200 bg-clip-text text-transparent">
                 nghệ nhân
               </span>{" "}
               &amp;{" "}
-              <span className="bg-linear-to-r from-zinc-800 via-zinc-700 to-zinc-600 bg-clip-text text-transparent">
+              <span className="gradient-word-glow bg-linear-to-r from-zinc-200 via-zinc-300 to-zinc-400 bg-clip-text text-transparent">
                 bộ đồ nghề
               </span>
             </h2>
@@ -86,7 +86,7 @@ export function Craftsman() {
                 <div key={step.label} className="flex items-center gap-2 sm:gap-3">
                   {i > 0 && (
                     <span
-                      className="hidden text-xs font-medium text-zinc-300 sm:inline"
+                      className="hidden text-xs font-medium text-amber-200/70 sm:inline"
                       aria-hidden
                     >
                       →
@@ -97,7 +97,7 @@ export function Craftsman() {
                   >
                     <Icon className={`size-4 shrink-0 sm:size-4.5 ${step.accent}`} aria-hidden strokeWidth={2} />
                     <span className="text-left leading-tight">
-                      <span className="block text-xs font-semibold text-zinc-900 sm:text-sm">{step.label}</span>
+                      <span className="block text-xs font-semibold text-zinc-900 sm:text-md">{step.label}</span>
                       <span className="block text-[10px] font-medium text-zinc-500 sm:text-[11px]">{step.hint}</span>
                     </span>
                   </span>
@@ -125,7 +125,7 @@ export function Craftsman() {
                 >
                   <Lightbulb className="size-5 text-sky-600" strokeWidth={2} />
                 </span>
-                <p className="min-w-0 text-pretty text-sm font-medium leading-relaxed text-zinc-700 sm:text-base">
+                <p className="min-w-0 text-pretty text-md font-medium leading-relaxed text-zinc-700 sm:text-base">
                   AI không phải phép thuật tự nghĩ ra mọi thứ — mà là{" "}
                   <span className="text-zinc-900">công cụ giải phóng bạn khỏi rào cản kỹ thuật</span>.
                 </p>

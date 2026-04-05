@@ -1,7 +1,4 @@
-"use client";
-
 import { Layers, Sparkles } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 
 const stack: { name: string; pill: string }[] = [
   { name: "Next.js", pill: "border-zinc-800/25 bg-zinc-900 text-white shadow-md shadow-zinc-900/15" },
@@ -13,102 +10,60 @@ const stack: { name: string; pill: string }[] = [
   { name: "Vercel", pill: "border-zinc-800/30 bg-zinc-950 text-white shadow-md shadow-zinc-900/20" },
 ];
 
-const container = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.04 },
-  },
-} as const;
-
-const rise = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
-} as const;
-
-/** Nested stagger for tech pills only */
-const pillList = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.055, delayChildren: 0.02 },
-  },
-} as const;
-
 export function Manifesto() {
-  const reduce = useReducedMotion();
-  const v = reduce ? undefined : container;
-  const item = reduce ? undefined : rise;
-
   return (
     <section
       id="tu-duy"
       className="section-atmosphere section-atmosphere--slate section-pad"
       aria-labelledby="manifesto-heading"
     >
-      <motion.div
-        className="mx-auto max-w-4xl text-center"
-        initial={reduce ? undefined : "hidden"}
-        whileInView={reduce ? undefined : "visible"}
-        viewport={{ once: true, margin: "-10% 0px -8% 0px", amount: 0.12 }}
-        variants={v}
-      >
-        <motion.header variants={item}>
+      <div className="mx-auto max-w-4xl text-center">
+        <header>
           <p className="surface-kicker inline-flex items-center justify-center gap-2 rounded-full border border-zinc-200/95 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-800 sm:text-xs">
             <Layers className="size-3.5 shrink-0 text-sky-600" aria-hidden strokeWidth={2.25} />
             Làm chủ stack
           </p>
           <h2
             id="manifesto-heading"
-            className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:mt-5 sm:text-4xl"
+            className="heading-section-glow mt-4 text-balance text-3xl font-semibold tracking-tight sm:mt-5 sm:text-5xl sm:leading-[1.08]"
           >
             Hãy làm chủ{" "}
-            <span className="bg-linear-to-r from-sky-700 via-cyan-600 to-sky-700 bg-clip-text text-transparent">
+            <span className="gradient-word-glow bg-linear-to-r from-sky-300 via-cyan-200 to-sky-300 bg-clip-text text-transparent">
               công nghệ
             </span>{" "}
             để phục vụ bạn
           </h2>
-        </motion.header>
+        </header>
 
-        <motion.p
-          variants={item}
-          className="copy-body mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg sm:leading-relaxed"
-        >
+        <p className="copy-body mx-auto mt-6 max-w-2xl text-[1.0625rem] leading-relaxed sm:text-lg sm:leading-relaxed md:text-xl">
           Đừng phụ thuộc bất kỳ ai khác để xây dựng giấc mơ của mình. Đầu tư một lần để sở hữu kỹ năng biến mọi ý tưởng
-          thành hiện thực trên màn hình — <strong className="font-semibold text-zinc-800">nhanh và tiết kiệm</strong>{" "}
+          thành hiện thực trên màn hình — <strong className="font-semibold text-zinc-100">nhanh và tiết kiệm</strong>{" "}
           hơn nhiều so với thuê ngoài.
-        </motion.p>
+        </p>
 
-        <motion.p
-          variants={item}
-          className="copy-body mx-auto mt-5 flex max-w-xl flex-wrap items-center justify-center gap-2 text-sm sm:text-base"
-        >
+        <p className="copy-body mx-auto mt-5 flex max-w-xl flex-wrap items-center justify-center gap-2 text-base sm:text-[1.0625rem]">
           <Sparkles className="size-4 shrink-0 text-amber-500" aria-hidden strokeWidth={2} />
           <span>Sản phẩm của bạn dùng công nghệ hiện đại, UI/UX chuyên nghiệp, mượt mà.</span>
-        </motion.p>
+        </p>
 
-        <motion.div
-          variants={reduce ? undefined : pillList}
+        <div
           className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
           aria-label="Công nghệ tiêu biểu trong khóa học"
         >
           {stack.map((tech) => (
-            <motion.span
+            <span
               key={tech.name}
-              variants={item}
-              className={`rounded-full border px-3.5 py-2 text-xs font-semibold tracking-tight transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:px-4 sm:text-sm ${tech.pill}`}
+              className={`rounded-full border px-3.5 py-2 text-xs font-semibold tracking-tight transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:px-4 sm:text-md ${tech.pill}`}
             >
               {tech.name}
-            </motion.span>
+            </span>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.p variants={item} className="mt-6 text-sm font-medium text-zinc-600">
+        <p className="mt-6 text-md font-medium text-zinc-300 [text-shadow:0_0_20px_rgb(255_255_255_/0.06)]">
           Tech stack tiêu biểu trong hệ sinh thái khóa học
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
     </section>
   );
 }

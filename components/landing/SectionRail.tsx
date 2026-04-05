@@ -50,7 +50,8 @@ export function SectionRail() {
   const activationYRef = useRef(88);
 
   const updateActive = useCallback(() => {
-    setActiveId(computeActiveId(activationYRef.current));
+    const next = computeActiveId(activationYRef.current);
+    setActiveId((prev) => (prev === next ? prev : next));
   }, []);
 
   const scheduleUpdate = useCallback(() => {
@@ -66,7 +67,8 @@ export function SectionRail() {
     if (raw && SECTIONS.some((s) => s.id === raw)) {
       requestAnimationFrame(() => {
         activationYRef.current = measureActivationY();
-        setActiveId(computeActiveId(activationYRef.current));
+        const next = computeActiveId(activationYRef.current);
+        setActiveId((prev) => (prev === next ? prev : next));
       });
     }
   }, []);
@@ -77,20 +79,32 @@ export function SectionRail() {
     return () => window.removeEventListener("hashchange", syncFromHash);
   }, [syncFromHash]);
 
+  /* Chỉ theo dõi scroll khi panel mở — tránh getBoundingClientRect + setState mỗi frame khi cuộn trang */
   useEffect(() => {
+    if (!open) return;
+
+    let cancelled = false;
     const remeasure = () => {
+      if (cancelled) return;
       activationYRef.current = measureActivationY();
       updateActive();
     };
-    remeasure();
-    window.addEventListener("scroll", scheduleUpdate, { passive: true });
-    window.addEventListener("resize", remeasure, { passive: true });
+
+    const rafId = requestAnimationFrame(() => {
+      if (cancelled) return;
+      remeasure();
+      window.addEventListener("scroll", scheduleUpdate, { passive: true });
+      window.addEventListener("resize", remeasure, { passive: true });
+    });
+
     return () => {
+      cancelled = true;
+      cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", remeasure);
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
-  }, [scheduleUpdate, updateActive]);
+  }, [open, scheduleUpdate, updateActive]);
 
   useEffect(() => {
     if (!open) return;
@@ -118,7 +132,7 @@ export function SectionRail() {
       onClick={() => setOpen(true)}
       aria-controls="section-rail-panel"
       aria-label="Mở mục lục trang"
-      className={`hidden fixed top-1/2 z-55 h-22 w-5 max-w-[min(100%,calc(100vw-0.5rem))] -translate-y-1/2 items-center justify-center rounded-r-xl border-zinc-200/95 bg-white py-2 pl-0 pr-0.5 text-zinc-800 shadow-[4px_0_32px_-10px_rgba(15,23,42,0.22),inset_0_1px_0_0_#fff] ring-1 ring-zinc-900/8 transition-colors hover:bg-zinc-50 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 lg:inline-flex sm:h-28 sm:w-10 ${RAIL_LEFT}`}
+      className={`rail-glow-tab hidden fixed top-1/2 z-55 h-24 w-8 max-w-[min(100%,calc(100vw-0.5rem))] -translate-y-1/2 items-center justify-center rounded-r-xl border border-l-0 border-zinc-600/85 bg-zinc-900/95 py-2 pl-0 pr-0.5 text-zinc-200 ring-1 ring-sky-400/18 transition-colors hover:border-sky-500/35 hover:bg-zinc-800 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 lg:inline-flex sm:h-28 sm:w-10 ${RAIL_LEFT}`}
       title="Mở mục lục"
     >
       <ChevronRight className="size-5 shrink-0 sm:size-6" aria-hidden />
@@ -133,22 +147,22 @@ export function SectionRail() {
     <nav
       id="section-rail-panel"
       aria-label="Mục lục các phần trên trang"
-      className={`hidden fixed top-1/2 z-55 max-h-[min(28rem,calc(100dvh-2rem-env(safe-area-inset-top)-env(safe-area-inset-bottom)))] w-[min(100%,calc(100vw-1rem-2.75rem-env(safe-area-inset-left,0px)))] max-w-54 -translate-y-1/2 overflow-y-auto overscroll-contain rounded-xl border border-zinc-200/95 bg-white py-2 pl-1.5 pr-1 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18),inset_0_1px_0_0_#fff] ring-1 ring-zinc-900/8 sm:max-w-none sm:w-35 lg:block ${RAIL_LEFT}`}
+      className={`rail-glow-panel hidden fixed top-1/2 z-55 max-h-[min(28rem,calc(100dvh-2rem-env(safe-area-inset-top)-env(safe-area-inset-bottom)))] w-[min(100%,calc(100vw-1rem-2.75rem-env(safe-area-inset-left,0px)))] max-w-54 -translate-y-1/2 overflow-y-auto overscroll-contain rounded-xl border border-zinc-600/85 bg-zinc-900/95 py-2 pl-1.5 pr-1 ring-1 ring-sky-400/18 sm:max-w-none sm:w-35 lg:block ${RAIL_LEFT}`}
     >
       <div className="flex items-center gap-1.5 px-1.5 pb-1.5">
         <span
-          className="h-px flex-1 bg-linear-to-r from-transparent via-zinc-300 to-transparent"
+          className="h-px flex-1 bg-linear-to-r from-transparent via-zinc-600 to-transparent"
           aria-hidden
         />
         <p className="shrink-0 text-[8px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
           Mục lục
         </p>
         <span
-          className="h-px flex-1 bg-linear-to-r from-transparent via-zinc-300 to-transparent"
+          className="h-px flex-1 bg-linear-to-r from-transparent via-zinc-600 to-transparent"
           aria-hidden
         />
       </div>
-      <ul className="relative flex flex-col gap-0 pl-1 before:absolute before:left-[5px] before:top-0.5 before:bottom-0.5 before:w-px before:bg-linear-to-b before:from-zinc-200/80 before:via-zinc-200/60 before:to-zinc-200/80">
+      <ul className="relative flex flex-col gap-0 pl-1 before:absolute before:left-[5px] before:top-0.5 before:bottom-0.5 before:w-px before:bg-linear-to-b before:from-zinc-600/80 before:via-zinc-600/50 before:to-zinc-600/80">
         {SECTIONS.map((s, index) => {
           const isActive = activeId === s.id;
           const num = String(index + 1).padStart(2, "0");
@@ -158,15 +172,15 @@ export function SectionRail() {
                 href={`#${s.id}`}
                 title={s.label}
                 aria-current={isActive ? "location" : undefined}
-                className={`group flex items-start gap-1 rounded-md border border-transparent py-1 pl-1 pr-0.5 text-left transition-[color,background-color,box-shadow,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                className={`group flex items-start gap-1 rounded-md border border-transparent py-1 pl-1 pr-0.5 text-left transition-[color,background-color,box-shadow,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 ${
                   isActive
-                    ? "border-sky-200/95 bg-sky-50 text-sky-950 shadow-sm shadow-sky-900/8 ring-1 ring-sky-200/70"
-                    : "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
+                    ? "border-sky-500/40 bg-sky-500/15 text-sky-100 shadow-sm shadow-sky-950/40 ring-1 ring-sky-400/35"
+                    : "text-zinc-400 hover:bg-zinc-800/90 hover:text-zinc-100"
                 }`}
               >
                 <span
                   className={`mt-px w-3.5 shrink-0 text-right font-mono text-[7px] font-semibold tabular-nums leading-none ${
-                    isActive ? "text-sky-600" : "text-zinc-400 group-hover:text-zinc-500"
+                    isActive ? "text-sky-400" : "text-zinc-500 group-hover:text-zinc-400"
                   }`}
                   aria-hidden
                 >
@@ -174,7 +188,7 @@ export function SectionRail() {
                 </span>
                 <span
                   className={`min-w-0 flex-1 text-[9px] font-medium leading-tight ${
-                    isActive ? "text-sky-950" : ""
+                    isActive ? "text-sky-50" : "text-zinc-300"
                   }`}
                 >
                   {s.label}

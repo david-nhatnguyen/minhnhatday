@@ -101,16 +101,16 @@ export function Formula4C() {
             </p>
             <h2
               id="formula-heading"
-              className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:mt-5 sm:text-4xl"
+              className="heading-section-glow mt-4 text-balance text-3xl font-semibold tracking-tight sm:mt-5 sm:text-5xl sm:leading-[1.08]"
             >
               Bạn sẽ{" "}
-              <span className="bg-linear-to-r from-sky-700 via-cyan-600 to-sky-700 bg-clip-text text-transparent">
+              <span className="gradient-word-glow bg-linear-to-r from-sky-300 via-cyan-200 to-teal-300 bg-clip-text text-transparent">
                 làm gì?
               </span>
             </h2>
-            <p className="copy-body mx-auto mt-4 max-w-xl text-sm leading-relaxed sm:text-base sm:leading-relaxed">
+            <p className="copy-body mx-auto mt-4 max-w-xl text-base leading-relaxed sm:text-lg sm:leading-relaxed">
               Chỉ viết ra lệnh (prompt). Trong khóa học, bạn làm chủ{" "}
-              <strong className="font-semibold text-zinc-900">Công thức 4C</strong>{" "}
+              <strong className="font-semibold text-zinc-100">Công thức 4C</strong>{" "}
               — kỹ năng cốt lõi của người tạo ra sản phẩm.
             </p>
           </header>
@@ -145,7 +145,7 @@ export function Formula4C() {
                       </div>
                     </div>
                     <blockquote
-                      className={`mt-5 border-l-[3px] pl-4 text-pretty text-sm italic leading-relaxed text-zinc-700 sm:pl-5 sm:text-[0.9375rem] sm:leading-relaxed ${a.quote}`}
+                      className={`mt-5 border-l-[3px] pl-4 text-pretty text-md italic leading-relaxed text-zinc-700 sm:pl-5 sm:text-[0.9375rem] sm:leading-relaxed ${a.quote}`}
                     >
                       <span aria-hidden className="text-zinc-400">
                         “

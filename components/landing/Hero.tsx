@@ -5,11 +5,11 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-hero flex-col justify-center overflow-x-hidden bg-[var(--hero-surface)] px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] min-[480px]:px-5 sm:px-6 sm:py-8"
+      className="relative flex min-h-hero flex-col justify-center overflow-x-hidden bg-transparent px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] min-[480px]:px-5 sm:px-6 sm:py-8"
       aria-labelledby="hero-heading"
     >
       <div className="relative mx-auto flex w-full max-w-5xl flex-col text-center">
-        <p className="animate-fade-up mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-600 sm:mb-5 sm:text-xs">
+        <p className="hero-eyebrow-glow animate-fade-up mb-3 font-mono text-xs font-medium uppercase tracking-[0.22em] sm:mb-5 sm:text-[13px]">
           Khóa học thực chiến · 8 giờ
         </p>
 
@@ -27,7 +27,7 @@ export function Hero() {
         </div>
 
         <div className="relative mx-auto mt-1 w-full max-w-4xl space-y-6 sm:mt-2 sm:space-y-8">
-        <div className="hero-copy-messaging relative mx-auto w-full max-w-4xl rounded-[1.75rem] px-5 py-8 sm:px-8 sm:py-10">
+        <div className="hero-copy-messaging surface-content relative mx-auto w-full max-w-4xl rounded-[1.75rem] px-5 py-8 sm:px-8 sm:py-10">
             <h1
               id="hero-heading"
               className="animate-fade-up animate-delay-1 text-balance font-semibold tracking-tight text-zinc-950"
@@ -35,19 +35,19 @@ export function Hero() {
               <span className="block text-[clamp(1.2rem,4vw+0.55rem,2.25rem)] leading-[1.2] min-[480px]:text-[clamp(1.35rem,4.2vw+0.65rem,2.25rem)] sm:text-5xl sm:leading-[1.15] lg:text-[3.25rem] lg:leading-[1.1]">
                 Bạn đang có ý tưởng xây website hay ứng dụng cho riêng mình?
               </span>
-              <span className="mt-2 block max-w-none bg-gradient-to-r from-zinc-900 via-sky-700 to-cyan-800 bg-clip-text text-[clamp(1.05rem,2.5vw+0.45rem,1.75rem)] leading-snug text-transparent min-[480px]:text-[clamp(1.15rem,2.8vw+0.5rem,1.75rem)] sm:mt-4 sm:text-4xl sm:leading-tight lg:mx-auto lg:text-[2.65rem]">
+              <span className="gradient-word-glow mt-2 block max-w-none bg-gradient-to-r from-zinc-800 via-sky-600 to-cyan-700 bg-clip-text text-[clamp(1.1rem,2.6vw+0.5rem,1.85rem)] leading-snug text-transparent min-[480px]:text-[clamp(1.2rem,2.9vw+0.55rem,1.85rem)] sm:mt-4 sm:text-4xl sm:leading-tight lg:mx-auto lg:text-[2.75rem]">
                 Hãy tự tay xây dựng nó theo cách của bạn.
               </span>
             </h1>
 
-            <p className="copy-body animate-fade-up animate-delay-2 mx-auto mt-5 max-w-none text-sm leading-relaxed sm:mt-9 sm:text-lg sm:leading-relaxed">
+            <p className="copy-body animate-fade-up animate-delay-2 mx-auto mt-5 max-w-none text-[15px] leading-relaxed sm:mt-9 sm:text-lg sm:leading-relaxed">
               Bạn không cần biết code — chỉ cần có ý tưởng. Hãy để tôi giúp bạn thực hiện nó{" "}
               <span className="font-semibold text-zinc-800">theo cách của bạn!</span>
             </p>
           </div>
 
           <div
-            className="hero-copy-trust animate-fade-up animate-delay-2 flex flex-col items-center justify-center gap-4 text-sm text-zinc-700 sm:flex-row sm:flex-wrap sm:gap-x-10 sm:gap-y-3"
+            className="hero-copy-trust animate-fade-up animate-delay-2 flex flex-col items-center justify-center gap-4 text-base text-zinc-200 sm:flex-row sm:flex-wrap sm:gap-x-10 sm:gap-y-3 sm:text-[17px] sm:leading-snug"
             aria-label="Thông tin khóa học và giảng viên"
           >
             <div className="flex max-w-full items-center gap-2.5 text-center sm:text-left">
@@ -55,26 +55,30 @@ export function Hero() {
                 <Clock className="size-4" aria-hidden />
               </span>
               <span className="min-w-0 text-pretty">
-                <span className="font-semibold tabular-nums text-zinc-900">8 tiếng</span>
-                <span className="text-zinc-400"> · </span>
-                <span>build sản phẩm thực tế</span>
+                <span className="font-semibold tabular-nums text-white [text-shadow:0_0_24px_rgb(255_255_255_/0.12)]">
+                  8 tiếng
+                </span>
+                <span className="text-zinc-500"> · </span>
+                <span className="text-zinc-200">build sản phẩm thực tế</span>
               </span>
             </div>
 
-            <span className="hidden text-zinc-300 sm:inline" aria-hidden>
+            <span className="hidden text-zinc-600 sm:inline" aria-hidden>
               ·
             </span>
 
             <div className="flex max-w-full items-center gap-3 text-center sm:text-left">
               <span
-                className="flex size-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-zinc-800 to-zinc-950 text-sm font-bold text-white shadow-lg shadow-zinc-900/20"
+                className="flex size-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-zinc-800 to-zinc-950 text-md font-bold text-white shadow-lg shadow-zinc-900/20"
                 aria-hidden
               >
                 MN
               </span>
               <div className="min-w-0 text-center leading-tight sm:text-left">
-                <p className="font-semibold text-zinc-900">Nguyễn Minh Nhật</p>
-                <p className="text-pretty text-xs text-zinc-500">Giảng viên · Vibe code 1 kèm 1</p>
+                <p className="font-semibold text-white [text-shadow:0_0_20px_rgb(255_255_255_/0.1)]">
+                  Nguyễn Minh Nhật
+                </p>
+                <p className="text-pretty text-md text-zinc-300">Giảng viên · Vibe code 1 kèm 1</p>
               </div>
             </div>
           </div>
@@ -83,14 +87,14 @@ export function Hero() {
         <div className="animate-fade-up animate-delay-3 mt-5 flex w-full max-w-md flex-col items-stretch justify-center gap-3 self-center sm:mt-10 sm:max-w-none sm:flex-row sm:items-center sm:gap-4 md:mt-12">
           <Link
             href="#gia"
-            className="group inline-flex min-h-12 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-600 via-sky-600 to-cyan-500 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-sky-500/25 transition [transition-property:transform,box-shadow,filter] duration-200 ease-out hover:shadow-xl hover:shadow-sky-500/30 hover:brightness-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:brightness-100 motion-reduce:active:scale-100 sm:min-w-[220px] sm:w-auto sm:px-8"
+            className="group inline-flex min-h-12 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-600 via-sky-600 to-cyan-500 px-6 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-sky-500/40 [text-shadow:0_1px_2px_rgb(0_0_0_/0.2)] transition [transition-property:transform,box-shadow,filter] duration-200 ease-out hover:shadow-xl hover:shadow-sky-500/50 hover:brightness-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:brightness-100 motion-reduce:active:scale-100 sm:min-w-[220px] sm:w-auto sm:px-8 sm:text-base"
           >
             Đăng ký khóa học
             <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
           </Link>
           <Link
             href="#cong-thuc-4c"
-            className="surface-content inline-flex min-h-12 w-full min-w-0 items-center justify-center gap-2 rounded-full border border-zinc-300/95 bg-white px-6 py-3.5 text-sm font-semibold text-zinc-900 ring-1 ring-zinc-900/[0.06] transition [transition-property:background-color,border-color,box-shadow,transform] duration-200 hover:border-zinc-400 hover:bg-zinc-50 hover:shadow-[0_22px_48px_-28px_rgba(15,23,42,0.14)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 active:scale-[0.99] motion-reduce:transition-none motion-reduce:active:scale-100 sm:min-w-[220px] sm:w-auto sm:px-8"
+            className="surface-content inline-flex min-h-12 w-full min-w-0 items-center justify-center gap-2 rounded-full border border-zinc-300/95 bg-white px-6 py-3.5 text-md font-semibold text-zinc-900 ring-1 ring-zinc-900/[0.06] transition [transition-property:background-color,border-color,box-shadow,transform] duration-200 hover:border-zinc-400 hover:bg-zinc-50 hover:shadow-[0_22px_48px_-28px_rgba(15,23,42,0.14)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 active:scale-[0.99] motion-reduce:transition-none motion-reduce:active:scale-100 sm:min-w-[220px] sm:w-auto sm:px-8"
           >
             <LayoutTemplate className="size-4 text-sky-600" aria-hidden />
             Xem công thức 4C

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#e6edf6",
+  themeColor: "#060608",
   width: "device-width",
   initialScale: 1,
 };
@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
+      className={`${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable} h-full scroll-auto overscroll-y-contain antialiased`}
     >
       <body className="mesh-bg min-h-full flex flex-col font-sans">{children}</body>
     </html>

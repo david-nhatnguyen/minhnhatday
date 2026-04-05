@@ -77,15 +77,15 @@ export function WhyCursor() {
             </p>
             <h2
               id="cursor-heading"
-              className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:mt-5 sm:text-4xl"
+              className="heading-section-glow mt-4 text-balance text-3xl font-semibold tracking-tight sm:mt-5 sm:text-5xl sm:leading-[1.08]"
             >
               Tại sao là{" "}
-              <span className="bg-linear-to-r from-sky-600 via-sky-600 to-cyan-600 bg-clip-text text-transparent">
+              <span className="gradient-word-glow bg-linear-to-r from-sky-300 via-cyan-200 to-sky-300 bg-clip-text text-transparent">
                 Cursor
               </span>
               ?
             </h2>
-            <p className="copy-body mt-4 text-sm leading-relaxed sm:text-base">
+            <p className="copy-body mt-4 text-base leading-relaxed sm:text-lg">
               Gắn liền toàn bộ khóa học — từ ý tưởng mô tả bằng tiếng Việt đến sản phẩm chạy thật, có chất lượng.
             </p>
           </header>
@@ -105,7 +105,7 @@ export function WhyCursor() {
                     <Icon className={`size-6 ${a.icon}`} aria-hidden strokeWidth={2} />
                   </div>
                   <h3 className="text-lg font-semibold tracking-tight text-zinc-900">{r.title}</h3>
-                  <p className="copy-body mt-3 flex-1 text-sm leading-relaxed sm:text-[0.9375rem] sm:leading-relaxed">
+                  <p className="copy-body mt-3 flex-1 text-md leading-relaxed sm:text-[0.9375rem] sm:leading-relaxed">
                     {r.body}
                   </p>
                 </article>
